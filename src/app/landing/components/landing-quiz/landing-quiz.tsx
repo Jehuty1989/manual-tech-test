@@ -1,6 +1,5 @@
 import Image from "next/image";
 import style from "./landing-quiz.module.scss";
-import landingStyle from "../../page.module.scss";
 
 export default function LandingQuiz() {
   return (
@@ -18,13 +17,11 @@ export default function LandingQuiz() {
           <br />
           to yourself
         </h1>
-        <p className={`${style.text} ${landingStyle["body-3"]}`}>
+        <p className={`${style.text} body-3`}>
           We’re working around the clock to bring you a holistic approach to
           your wellness. From top to bottom, inside and out.
         </p>
-        <button className={`${style.button} ${landingStyle["heading-7"]}`}>
-          TAKE THE QUIZ
-        </button>
+        <button className={`${style.button} heading-7`}>TAKE THE QUIZ</button>
       </div>
     </div>
   );

@@ -1,0 +1,27 @@
+.footer {
+  background-color: var(--grandfather-60);
+
+  .container {
+    display: flex;
+    padding: 68px 200px 68px 138px;
+
+    .icon {
+      margin-right: 320px;
+    }
+
+    .footer-list-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .rights-reserved {
+    color: var(--grandfather-30);
+    display: flex;
+    justify-content: center;
+    padding: 25px 0;
+    margin: 0 130px;
+    border-top: solid 1px var(--grandfather);
+  }
+}

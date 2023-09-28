@@ -1,14 +1,12 @@
 import LandingHelpWith from "./components/landing-help-with/landing-help-with";
 import LandingQuiz from "./components/landing-quiz/landing-quiz";
-import landingStyle from "./page.module.scss";
+import style from "./page.module.scss";
 
 export default function Landing() {
   return (
     <>
       <LandingQuiz />
-      <h2
-        className={`${landingStyle["help-with"]} ${landingStyle["heading-3"]}`}
-      >
+      <h2 className={`${style["help-with"]} heading-3`}>
         What can we help with
       </h2>
       <LandingHelpWith

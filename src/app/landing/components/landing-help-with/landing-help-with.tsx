@@ -1,6 +1,5 @@
 import Image from "next/image";
 import style from "./landing-help-with.module.scss";
-import landingStyle from "../../page.module.scss";
 
 interface HelpWithImageProps {
   image: string;
@@ -44,12 +43,8 @@ export default function LandingHelpWith({
       )}
 
       <div className={style["text-container"]}>
-        <h3 className={`${style.title} ${landingStyle["heading-7"]}`}>
-          {title}
-        </h3>
-        <h4 className={`${style.subtitle} ${landingStyle["heading-4"]}`}>
-          {subtitle}
-        </h4>
+        <h3 className={`${style.title} heading-7`}>{title}</h3>
+        <h4 className={`${style.subtitle} heading-4`}>{subtitle}</h4>
         <p>{text}</p>
         <p className={style[`number-${imageSide}`]}>{number}</p>
       </div>
