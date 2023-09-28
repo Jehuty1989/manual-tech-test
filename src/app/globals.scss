@@ -1,0 +1,24 @@
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  // Custom Manual variables
+  --grandfather-30: #6D8A83;
+  --grandfather-60: #E8EFE9;
+  --grandfather-80: #F3F7F4;
+  --father-hero: #0B3B3C;
+  --son-accent: #7E0707;
+  --White: #FFF;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: var(--father-hero);
+  background: var(--White);
+}
