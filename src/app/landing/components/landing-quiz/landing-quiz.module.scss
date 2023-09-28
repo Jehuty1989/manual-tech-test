@@ -1,0 +1,36 @@
+.container {
+  height: 750px;
+  background-image: url('/manual-landing-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 30px 138px;
+
+  .icon {
+    margin-bottom: 119px;
+  }
+
+  .text-container {
+    width: 468px;
+
+    .heading {
+      margin-bottom: 20px;
+      font-size: 90px;
+      font-feature-settings: 'clig' off, 'liga' off;
+      line-height: 90px;
+      letter-spacing: -2.7px;
+    }
+
+    .text {
+      margin-bottom: 36px;
+    }
+
+    .button {
+      font-family: inherit;
+      color: var(--White);
+      background-color: var(--son-accent);
+      padding: 15px 30px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

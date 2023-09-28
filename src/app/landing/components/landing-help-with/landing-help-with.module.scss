@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 120px;
+  justify-content: center;
+  width: 100%;
+  padding: 0 250px;
+  margin-bottom: 90px;
+
+  .text-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    padding-top: 90px;
+
+    .title {
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      margin-bottom: 22px;
+    }
+
+    .number {
+      z-index: -1;
+      position: absolute;
+      color: var(--grandfather-80);
+      font-size: 450px;
+      font-weight: 700;
+      line-height: 450px;
+      letter-spacing: -13.5px;
+      bottom: 0;
+
+      &-left {
+        @extend .number;
+        right: 120px;
+      }
+
+      &-right {
+        @extend .number;
+        left: 32px;
+      }
+    }
+  }
+
+  .image-container {
+    position: relative;
+    height: 445px;
+    width: 370px;
+
+    .image {
+      object-fit: cover;
+    }
+  }
+}
