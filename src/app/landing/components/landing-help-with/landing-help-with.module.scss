@@ -54,8 +54,14 @@
     }
   }
 
-  @media (max-width: 8345px) {
+  @media (max-width: 845px) {
     padding: 0 130px;
+
+    .text-container {
+      .number {
+        font-size: 300px;
+      }
+    }
   }
 
   @media (max-width: 688px) {
