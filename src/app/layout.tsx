@@ -19,8 +19,8 @@ const ttNorms = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Manual",
-  description: "Manual.co Frontend Assignment",
+  title: "Manual - Alastair Turner Frontend Assignment",
+  description: "Manual.co - Alastair Turner Frontend Assignment",
 };
 
 export default function RootLayout({
