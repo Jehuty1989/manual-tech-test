@@ -30,7 +30,7 @@ export interface FooterListProps {
 export default function FooterList({ title, listItems }: FooterListProps) {
   return (
     <div className={style.container}>
-      <h3 className={`${style["list-heading"]} heading-7`}>{title}</h3>
+      <h3 className={`heading-7-bold`}>{title}</h3>
       <ul className={style.list}>
         {listItems.map((listItem, index) => (
           <li key={index}>

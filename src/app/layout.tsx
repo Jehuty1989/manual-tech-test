@@ -10,6 +10,11 @@ const ttNorms = localFont({
       weight: "400",
       style: "normal",
     },
+    {
+      path: "../fonts/tt-norms/TTNorms-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
   ],
 });
 
