@@ -53,4 +53,35 @@
       object-fit: cover;
     }
   }
+
+  @media (max-width: 835px) {
+    padding: 0 130px;
+  }
+
+  @media (max-width: 688px) {
+    padding: 0 32px;
+    margin-bottom: 32px;
+
+    .text-container {
+      padding-top: 32px;
+
+      .number {
+        font-size: 150px;
+
+        &-left {
+          right: 0;
+          top: -50px;
+        }
+
+        &-right {
+          left: 0;
+          top: -50px;
+        }
+      }
+    }
+
+    .image-container {
+      display: none;
+    }
+  }
 }

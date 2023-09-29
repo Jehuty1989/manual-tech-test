@@ -3,7 +3,7 @@
 
   .container {
     display: flex;
-    padding: 68px 200px 68px 138px;
+    padding: 68px;
 
     .icon {
       margin-right: 320px;
@@ -23,5 +23,30 @@
     padding: 25px 0;
     margin: 0 130px;
     border-top: solid 1px var(--grandfather);
+  }
+
+  @media (max-width: 1160px) {
+    .container{
+      .icon {
+        margin-right: 64px;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .container {
+      flex-direction: column;
+      padding: 32px;
+
+      .footer-list-container {
+        flex-direction: column;
+        margin-top: 24px;
+        gap: 24px;
+      }
+    }
+
+    .rights-reserved {
+      margin: 0 32px;
+    }
   }
 }

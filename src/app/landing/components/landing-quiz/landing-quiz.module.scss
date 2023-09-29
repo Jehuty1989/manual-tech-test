@@ -1,9 +1,12 @@
 .container {
   height: 750px;
+  width: 100%;
   background-image: url('/manual-landing-background.jpg');
+  background-position: right top;
   background-size: cover;
   background-repeat: no-repeat;
   padding: 30px 138px;
+
 
   .icon {
     margin-bottom: 119px;
@@ -15,7 +18,6 @@
     .heading {
       margin-bottom: 20px;
       font-size: 90px;
-      font-feature-settings: 'clig' off, 'liga' off;
       line-height: 90px;
       letter-spacing: -2.7px;
     }
@@ -31,6 +33,39 @@
       padding: 15px 30px;
       border: none;
       cursor: pointer;
+    }
+  }
+
+  @media (max-width: 1240px) {
+    background-position: center;
+  }
+
+  @media (max-width: 688px) {
+    height: 100%;
+    background-image: none;
+    background-color: var(--father-50);
+    padding: 30px;
+
+    .icon {
+      margin-bottom: 32px;
+    }
+
+    .text-container {
+      width: 100%;
+
+      .heading {
+        font-size: 80px;
+        line-height: 80px;
+      }
+    }
+  }
+
+  @media (max-width: 320px) {
+    .text-container {
+      .heading {
+        font-size: 50px;
+        line-height: 50px;
+      }
     }
   }
 }

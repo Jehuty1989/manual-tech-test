@@ -1,5 +1,6 @@
 .container {
   width: 174px;
+
   .list {
     list-style: none;
     margin-top: 20px;
@@ -12,5 +13,14 @@
         gap: 20px;
       }
     }
+  }
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+
+  @media (max-width: 688px) {
+    width: 100%;
+    margin-top: 16px;
   }
 }
