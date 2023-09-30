@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Dispatch,
   SetStateAction,
@@ -45,7 +43,6 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
   const [isEndOfQuiz, setIsEndOfQuiz] = useState<boolean>(false);
   const [footer] = document.getElementsByTagName("footer");
 
-  // This is not necessary but I think it adds to UX if the scrollbars are hidden
   useEffect(() => {
     footer.classList.add("display-none");
 
@@ -141,7 +138,7 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
                   : style.answer
               }`}
             >
-              <p className="body-3">{option.display}</p>
+              <p className="body-2">{option.display}</p>
             </div>
           ),
         )}

@@ -59,31 +59,6 @@ export default function LandingQuiz({
           </div>
         </>
       )}
-
-      {/* <Image
-        className={style.icon}
-        src={"/icons/manual-icon.svg"}
-        width={40}
-        height={40}
-        alt="Manual Icon"
-      />
-      <div className={style["text-container"]}>
-        <h1 className={style.heading}>
-          Be good
-          <br />
-          to yourself
-        </h1>
-        <p className={`${style.text} body-3`}>
-          We’re working around the clock to bring you a holistic approach to
-          your wellness. From top to bottom, inside and out.
-        </p>
-        <button
-          onClick={() => setShowQuiz(true)}
-          className={`${style.button} heading-7`}
-        >
-          TAKE THE QUIZ
-        </button>
-      </div> */}
     </div>
   );
 }
