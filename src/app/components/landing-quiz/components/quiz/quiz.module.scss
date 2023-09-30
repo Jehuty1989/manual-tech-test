@@ -1,0 +1,16 @@
+.questions-container {
+  display: flex;
+  gap: 16px;
+
+
+  .question {
+    margin: 1px;
+    cursor: pointer;
+
+    &-selected {
+      @extend .question;
+
+      border: solid black 1px;
+    }
+  }
+}

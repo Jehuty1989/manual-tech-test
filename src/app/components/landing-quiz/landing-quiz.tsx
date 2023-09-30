@@ -3,31 +3,29 @@
 import Image from "next/image";
 import style from "./landing-quiz.module.scss";
 import { useEffect, useState } from "react";
-import Quiz, { QuizProps } from "./components/quiz/quiz";
+import { Quiz, QuizQuestion } from "./components/quiz/quiz";
 import { QuizMockDataInterface } from "../../api/quiz/mock-data/quiz.mock-data";
 
 export default function LandingQuiz() {
   const [showQuiz, setShowQuiz] = useState<boolean>(false);
-  const [questions, setQuestions] = useState<QuizMockDataInterface>();
-  const [question, setQuestion] = useState<QuizProps>();
+  const [questions, setQuestions] = useState<QuizQuestion[]>();
 
   useEffect(() => {
     fetch("/api/quiz")
       .then((res) => res.json())
-      .then(setQuestions)
+      .then((data: QuizMockDataInterface) => {
+        console.log(data);
+        setQuestions(data.questions);
+      })
       .catch(console.error);
   }, [setQuestions]);
 
-  useEffect(() => {
-    if (questions) {
-      setQuestion(questions.questions[0]);
-      console.log(questions);
-    }
-  }, [questions]);
-
   return (
     <>
-      {showQuiz && <Quiz></Quiz>}
+      {showQuiz && questions && (
+        <Quiz questions={questions} setShowQuiz={setShowQuiz} />
+      )}
+
       <div className={style.container}>
         <Image
           className={style.icon}

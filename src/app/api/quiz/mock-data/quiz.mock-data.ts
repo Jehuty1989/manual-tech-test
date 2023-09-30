@@ -1,10 +1,9 @@
-import {
-  QuizProps,
-  QuizQuestionType,
+import QuizQuestionType, {
+  QuizQuestion,
 } from "../../../components/landing-quiz/components/quiz/quiz";
 
 export interface QuizMockDataInterface {
-  questions: QuizProps[];
+  questions: QuizQuestion[];
 }
 
 export const QuizMockData: QuizMockDataInterface = {
