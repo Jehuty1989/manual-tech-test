@@ -6,7 +6,7 @@ export default function LandingQuiz() {
     <div className={style.container}>
       <Image
         className={style.icon}
-        src={"/manual-icon.svg"}
+        src={"/icons/manual-icon.svg"}
         width={40}
         height={40}
         alt="Manual Icon"

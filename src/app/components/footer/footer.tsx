@@ -1,7 +1,7 @@
 import style from "./footer.module.scss";
 import Image from "next/image";
 import FooterList from "./components/footer-list/footer-list";
-import { FooterListItems } from "./utils/footer-list";
+import { FooterListItemsMockData } from "./mock-data/footer-list.mock-data";
 
 export default function Footer() {
   return (
@@ -9,13 +9,13 @@ export default function Footer() {
       <div className={style.container}>
         <Image
           className={style.icon}
-          src={"/manual-icon.svg"}
+          src={"/icons/manual-icon.svg"}
           width={75}
           height={75}
           alt="Manual Icon"
         />
         <div className={style["footer-list-container"]}>
-          {FooterListItems.map((footerListItem, index) => (
+          {FooterListItemsMockData.map((footerListItem, index) => (
             <FooterList
               key={index}
               title={footerListItem.title}

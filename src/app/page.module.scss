@@ -1,0 +1,10 @@
+.help-with {
+  display: flex;
+  justify-content: center;
+  margin: 70px auto;
+  text-align: center;
+
+  @media (max-width: 688px) {
+    margin: 32px;
+  }
+}

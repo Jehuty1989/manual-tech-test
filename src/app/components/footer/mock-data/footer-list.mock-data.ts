@@ -1,6 +1,6 @@
 import { FooterListProps } from "../components/footer-list/footer-list";
 
-export const FooterListItems: FooterListProps[] = [
+export const FooterListItemsMockData: FooterListProps[] = [
   {
     title: "PRODUCT",
     listItems: [
@@ -66,7 +66,7 @@ export const FooterListItems: FooterListProps[] = [
       {
         icons: [
           {
-            src: "/logo-fb-simple.svg",
+            src: "/icons/logo-fb-simple.svg",
             altName: "Facebook Logo",
             link: "",
             options: {
@@ -75,12 +75,12 @@ export const FooterListItems: FooterListProps[] = [
             },
           },
           {
-            src: "/logo-google-simple.svg",
+            src: "/icons/logo-google-simple.svg",
             altName: "Google Logo",
             link: "",
           },
           {
-            src: "/logo-twitter-simple.svg",
+            src: "/icons/logo-twitter-simple.svg",
             altName: "Twitter Logo",
             link: "",
           },

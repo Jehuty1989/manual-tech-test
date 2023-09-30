@@ -6,12 +6,12 @@ import Footer from "./components/footer/footer";
 const ttNorms = localFont({
   src: [
     {
-      path: "../fonts/tt-norms/TTNorms-Regular.otf",
+      path: "../../public/fonts/tt-norms/TTNorms-Regular.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../fonts/tt-norms/TTNorms-Bold.otf",
+      path: "../../public/fonts/tt-norms/TTNorms-Bold.otf",
       weight: "700",
       style: "normal",
     },

@@ -2,11 +2,11 @@ import Image from "next/image";
 import style from "./landing-help-with.module.scss";
 
 interface HelpWithImageProps {
-  image: string;
+  imageUrl: string;
   altImageName: string;
 }
 
-interface LandingHelpWithProps extends HelpWithImageProps {
+export interface LandingHelpWithProps extends HelpWithImageProps {
   number: string;
   title: string;
   subtitle: string;
@@ -14,12 +14,12 @@ interface LandingHelpWithProps extends HelpWithImageProps {
   imageSide: "left" | "right";
 }
 
-function HelpWithImage({ image, altImageName }: HelpWithImageProps) {
+function HelpWithImage({ imageUrl, altImageName }: HelpWithImageProps) {
   return (
     <div className={style["image-container"]}>
       <Image
         className={style.image}
-        src={image}
+        src={imageUrl}
         alt={altImageName}
         fill={true}
       />
@@ -32,14 +32,14 @@ export default function LandingHelpWith({
   title,
   subtitle,
   text,
-  image,
+  imageUrl,
   altImageName,
   imageSide,
 }: LandingHelpWithProps) {
   return (
     <div className={style.container}>
       {imageSide === "left" && (
-        <HelpWithImage image={image} altImageName={altImageName} />
+        <HelpWithImage imageUrl={imageUrl} altImageName={altImageName} />
       )}
 
       <div className={style["text-container"]}>
@@ -50,7 +50,7 @@ export default function LandingHelpWith({
       </div>
 
       {imageSide === "right" && (
-        <HelpWithImage image={image} altImageName={altImageName} />
+        <HelpWithImage imageUrl={imageUrl} altImageName={altImageName} />
       )}
     </div>
   );
