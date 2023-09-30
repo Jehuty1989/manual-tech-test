@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import style from "./quiz.module.scss";
+import Image from "next/image";
 
 type SelectedAnswerInterface = Record<number, QuizOption>;
 
@@ -42,7 +43,16 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
   const [question, setQuestion] = useState<QuizQuestion>();
   const [howManyQuestions, setHowManyQuestions] = useState<number>(0);
   const [isEndOfQuiz, setIsEndOfQuiz] = useState<boolean>(false);
-  const [isAnswerRejected, setIsAnswerRejected] = useState<boolean>(false);
+  const [footer] = document.getElementsByTagName("footer");
+
+  // This is not necessary but I think it adds to UX if the scrollbars are hidden
+  useEffect(() => {
+    footer.classList.add("display-none");
+
+    return () => {
+      footer.classList.remove("display-none");
+    };
+  });
 
   useEffect(() => {
     setHowManyQuestions(questions.length);
@@ -52,14 +62,9 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
     setQuestion(questions[indexOfQuestion]);
   }, [setQuestion, indexOfQuestion, questions]);
 
-  const goToNextQuestion = useCallback(
-    (selectedAnswer: QuizOption): void => {
-      if (!selectedAnswer.isRejection) {
-        setIndexOfQuestion(indexOfQuestion + 1);
-      }
-    },
-    [indexOfQuestion],
-  );
+  const goToNextQuestion = useCallback((): void => {
+    setIndexOfQuestion(indexOfQuestion + 1);
+  }, [indexOfQuestion]);
 
   useEffect(() => {
     if (howManyQuestions > 0) {
@@ -69,69 +74,113 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
     }
   }, [setIsEndOfQuiz, indexOfQuestion, howManyQuestions]);
 
-  // const isAnswerRejection = useCallback(
-  //   (selectedAnswer: QuizOption): boolean => {
-  //     set;
-  //   },
-  //   [],
-  // );
-
   const setAnswer = useCallback(
     (selectedAnswer: QuizOption): void => {
       const tempSelectedAnswers = selectedAnswers;
       tempSelectedAnswers[indexOfQuestion] = selectedAnswer;
       setSelectedAnswers({ ...tempSelectedAnswers });
-      goToNextQuestion(selectedAnswer);
     },
-    [indexOfQuestion, selectedAnswers, setSelectedAnswers, goToNextQuestion],
+    [indexOfQuestion, selectedAnswers, setSelectedAnswers],
   );
 
   const goBackOneQuestion = useCallback((): void => {
     setIndexOfQuestion(indexOfQuestion - 1);
   }, [setIndexOfQuestion, indexOfQuestion]);
 
+  const closeQuiz = useCallback((): void => {
+    setShowQuiz(false);
+  }, [setShowQuiz]);
+
   return (
-    <div>
+    <div className={style.container}>
+      <div className={style["close-icon-container"]}>
+        <Image
+          onClick={() => closeQuiz()}
+          className={style["close-icon"]}
+          src="/icons/close-icon.svg"
+          height={24}
+          width={24}
+          alt="close"
+        />
+      </div>
       {isEndOfQuiz && (
-        <p>
+        <p className={`${style.text} body-3`}>
           Great news! We have the perfect treatment for your hair loss. Proceed
           to{" "}
-          <a href="https://www.manual.co" target="_blank">
+          <a
+            className={style["manual-link"]}
+            href="https://www.manual.co"
+            target="_blank"
+          >
             www.manual.co
           </a>
           , and prepare to say hello to your new hair!
         </p>
       )}
-      {question?.question}
-      <div className={style["questions-container"]}>
-        {question?.options.map((option, index) => (
-          <div
-            key={index}
-            onClick={() => setAnswer(option)}
-            className={`${
-              option === selectedAnswers[indexOfQuestion]
-                ? style["question-selected"]
-                : style.question
-            }`}
-            dangerouslySetInnerHTML={{ __html: option.display }}
-          ></div>
-        ))}
+      <h1 className={`${style.text} heading-4`}>{question?.question}</h1>
+      <div className={style["answers-container"]}>
+        {question?.options.map((option, index) =>
+          option.display.includes("<img") ? (
+            <div
+              key={index}
+              onClick={() => setAnswer(option)}
+              className={`${
+                option === selectedAnswers[indexOfQuestion]
+                  ? style["answer-selected"]
+                  : style.answer
+              }`}
+              dangerouslySetInnerHTML={{ __html: option.display }}
+            ></div>
+          ) : (
+            <div
+              key={index}
+              onClick={() => setAnswer(option)}
+              className={`${
+                option === selectedAnswers[indexOfQuestion]
+                  ? style["answer-selected"]
+                  : style.answer
+              }`}
+            >
+              <p className="body-3">{option.display}</p>
+            </div>
+          ),
+        )}
       </div>
       {selectedAnswers[indexOfQuestion] &&
         selectedAnswers[indexOfQuestion].isRejection && (
-          <p>
+          <p className={`${style.text} body-3`}>
             Unfortunately, we are unable to prescribe this medication for you.
             is because finasteride can alter the PSA levels, which maybe used to
             monitor for cancer. You should discuss this further with your GP or
             specialist if you would still like this medication.
           </p>
         )}
-      <button
-        onClick={() => goBackOneQuestion()}
-        disabled={indexOfQuestion === 0}
-      >
-        Back
-      </button>
+      <div className={style["button-container"]}>
+        <button
+          className={style.button}
+          onClick={() => goBackOneQuestion()}
+          disabled={indexOfQuestion === 0}
+        >
+          <p className="body-4">Back</p>
+        </button>
+        {!isEndOfQuiz && (
+          <button
+            className={style.button}
+            onClick={() => goToNextQuestion()}
+            disabled={
+              !selectedAnswers[indexOfQuestion] ||
+              selectedAnswers[indexOfQuestion]?.isRejection
+            }
+          >
+            <p className="body-4">Next</p>
+          </button>
+        )}
+        {isEndOfQuiz && (
+          <button className={style.button} onClick={() => closeQuiz()}>
+            <p className="body-4">Finish</p>
+          </button>
+        )}
+      </div>
     </div>
   );
 }

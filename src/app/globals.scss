@@ -1,3 +1,4 @@
+
 :root {
   // Custom Manual variables
   --grandfather: #BDCDC5;
@@ -67,4 +68,20 @@ a {
     @extend .body;
     font-size: 16px;
   }
+}
+
+// // A class to remove the scrollbars
+// .no-scrollbar {
+//   // For IE and Edge
+//   -ms-overflow-style: none;
+//   // For firefox
+//   scrollbar-width: none;
+
+//   // For webkit browsers, i.e. Chrome, Safari etc.
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+// }
+.display-none {
+  display: none;
 }

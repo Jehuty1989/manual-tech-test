@@ -6,6 +6,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   padding: 30px 138px;
+  position: relative;
+
+  &.quiz-started {
+    height: 0;
+  }
 
 
   .icon {
