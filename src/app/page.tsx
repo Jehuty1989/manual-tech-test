@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import LandingHelpWith from "./components/landing-help-with/landing-help-with";
-import LandingQuiz from "./components/landing-quiz/landing-quiz";
+import LandingHelpWith from "./components/landing-help-with/landing-help-with.component";
+import LandingQuiz from "./components/landing-quiz/landing-quiz.component";
 import { LandingHelpWithMockData } from "./mock-data/landing-help-with.mock-data";
 import style from "./page.module.scss";
-import { Quiz, QuizQuestion } from "./components/quiz/quiz";
+import { Quiz, QuizQuestion } from "./components/quiz/quiz.component";
 import { QuizMockDataInterface } from "./api/quiz/mock-data/quiz.mock-data";
-import Footer from "./components/footer/footer";
+import Footer from "./components/footer/footer.component";
 import Loading from "../components/loading/loading.component";
 import QuizError from "./components/quiz-error/quiz-error.component";
 

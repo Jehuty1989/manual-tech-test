@@ -1,4 +1,4 @@
-import { LandingHelpWithProps } from "../components/landing-help-with/landing-help-with";
+import { LandingHelpWithProps } from "../components/landing-help-with/landing-help-with.component";
 
 export const LandingHelpWithMockData: LandingHelpWithProps[] = [
   {

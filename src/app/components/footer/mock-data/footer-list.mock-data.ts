@@ -1,4 +1,4 @@
-import { FooterListProps } from "../components/footer-list/footer-list";
+import { FooterListProps } from "../components/footer-list/footer-list.component";
 
 export const FooterListItemsMockData: FooterListProps[] = [
   {

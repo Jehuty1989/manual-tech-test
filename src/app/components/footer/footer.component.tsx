@@ -1,6 +1,6 @@
 import style from "./footer.module.scss";
 import Image from "next/image";
-import FooterList from "./components/footer-list/footer-list";
+import FooterList from "./components/footer-list/footer-list.component";
 import { FooterListItemsMockData } from "./mock-data/footer-list.mock-data";
 
 export default function Footer() {
