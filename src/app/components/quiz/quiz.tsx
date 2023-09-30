@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import style from "./quiz.module.scss";
-import Image from "next/image";
+import CloseIcon from "../../../components/close-icon/close-icon.component";
 
 type SelectedAnswerInterface = Record<number, QuizOption>;
 
@@ -43,15 +43,6 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
   const [question, setQuestion] = useState<QuizQuestion>();
   const [howManyQuestions, setHowManyQuestions] = useState<number>(0);
   const [isEndOfQuiz, setIsEndOfQuiz] = useState<boolean>(false);
-  const [footer] = document.getElementsByTagName("footer");
-
-  useEffect(() => {
-    footer.classList.add("display-none");
-
-    return () => {
-      footer.classList.remove("display-none");
-    };
-  });
 
   useEffect(() => {
     setHowManyQuestions(questions.length);
@@ -92,16 +83,7 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
 
   return (
     <div className={style.container}>
-      <div className={style["close-icon-container"]}>
-        <Image
-          onClick={() => closeQuiz()}
-          className={style["close-icon"]}
-          src="/icons/close-icon.svg"
-          height={24}
-          width={24}
-          alt="close"
-        />
-      </div>
+      <CloseIcon onClick={closeQuiz} />
       {isEndOfQuiz && (
         <p className={`${style.text} body-3`}>
           Great news! We have the perfect treatment for your hair loss. Proceed

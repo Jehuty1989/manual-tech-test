@@ -12,16 +12,6 @@
   left: 0;
   z-index: 1;
 
-  .close-icon-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-
-    .close-icon {
-      cursor: pointer;
-    }
-  }
-
   .text {
     text-align: center;
   }
@@ -40,7 +30,6 @@
 
 
     .answer {
-      margin: 1px;
       cursor: pointer;
       border: solid var(--White) 1px;
       padding: 2px 8px;

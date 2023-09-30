@@ -1,0 +1,9 @@
+.close-icon-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  .close-icon {
+    cursor: pointer;
+  }
+}

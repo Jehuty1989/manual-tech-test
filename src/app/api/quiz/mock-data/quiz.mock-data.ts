@@ -1,6 +1,4 @@
-import QuizQuestionType, {
-  QuizQuestion,
-} from "../../../components/landing-quiz/components/quiz/quiz";
+import QuizQuestionType, { QuizQuestion } from "../../../components/quiz/quiz";
 
 export interface QuizMockDataInterface {
   questions: QuizQuestion[];

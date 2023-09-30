@@ -12,7 +12,7 @@
 }
 
 * {
-  display: revert;
+  // display: revert;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -74,8 +74,4 @@ a {
     @extend .body;
     font-size: 16px;
   }
-}
-
-.display-none {
-  display: none;
 }
