@@ -21,9 +21,8 @@ export default function LandingQuiz({
         alt="Manual Icon"
       />
       <div className={style["text-container"]}>
-        <h1 className={style.heading}>
-          Be good
-          <br />
+        <h1 data-testid="landing-quiz-heading" className={style.heading}>
+          Be good <br />
           to yourself
         </h1>
         <p className={`${style.text} body-3`}>
@@ -31,6 +30,7 @@ export default function LandingQuiz({
           your wellness. From top to bottom, inside and out.
         </p>
         <button
+          data-testid="start-quiz-button"
           onClick={() => setShowQuiz(true)}
           className={`${style.button} heading-7`}
         >

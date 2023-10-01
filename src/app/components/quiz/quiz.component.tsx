@@ -98,11 +98,14 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
           , and prepare to say hello to your new hair!
         </p>
       )}
-      <h1 className={`${style.text} heading-4`}>{question?.question}</h1>
+      <h1 data-testid="quiz-question" className={`${style.text} heading-4`}>
+        {question?.question}
+      </h1>
       <div className={style["answers-container"]}>
         {question?.options.map((option, index) =>
           option.display.includes("<img") ? (
             <div
+              data-testid="quiz-answer"
               key={index}
               onClick={() => setAnswer(option)}
               className={`${
@@ -114,6 +117,7 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
             ></div>
           ) : (
             <div
+              data-testid="quiz-answer"
               key={index}
               onClick={() => setAnswer(option)}
               className={`${
@@ -129,7 +133,10 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
       </div>
       {selectedAnswers[indexOfQuestion] &&
         selectedAnswers[indexOfQuestion].isRejection && (
-          <p className={`${style.text} body-3`}>
+          <p
+            data-testid="quiz-rejection-message"
+            className={`${style.text} body-3`}
+          >
             Unfortunately, we are unable to prescribe this medication for you.
             is because finasteride can alter the PSA levels, which maybe used to
             monitor for cancer. You should discuss this further with your GP or
@@ -146,6 +153,7 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
         </button>
         {!isEndOfQuiz && (
           <button
+            data-testid="quiz-next-button"
             className={style.button}
             onClick={() => goToNextQuestion()}
             disabled={
@@ -157,7 +165,11 @@ export function Quiz({ questions, setShowQuiz }: QuizProps) {
           </button>
         )}
         {isEndOfQuiz && (
-          <button className={style.button} onClick={() => closeQuiz()}>
+          <button
+            data-testid="quiz-finish-button"
+            className={style.button}
+            onClick={() => closeQuiz()}
+          >
             <p className="body-4">Finish</p>
           </button>
         )}

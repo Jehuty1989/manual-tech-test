@@ -15,7 +15,9 @@ export default function QuizError({ setShowQuiz }: QuizErrorProps) {
     <div className={style.container}>
       <CloseIcon onClick={closeQuiz} />
       <div className={style["text-container"]}>
-        <h1 className="heading-3">Quiz failed to load</h1>
+        <h1 data-testid="quiz-error-heading" className="heading-3">
+          Quiz failed to load
+        </h1>
         <p className="body-4">
           Please reload the page to try again or contact Manual support
         </p>

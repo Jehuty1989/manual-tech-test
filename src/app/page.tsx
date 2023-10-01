@@ -20,6 +20,7 @@ export default function Landing() {
     fetch("/api/quiz")
       .then((res) => res.json())
       .then((data: QuizMockDataInterface) => {
+        // console.log(data);
         setQuestions(data.questions);
         setLoading(false);
       })

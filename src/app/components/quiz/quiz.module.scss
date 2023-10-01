@@ -1,6 +1,5 @@
 .container {
   padding: 32px;
-  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,9 +7,6 @@
   background-color: var(--White);
   min-height: 100vh;
   width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
 
   .text {
     text-align: center;
