@@ -1,4 +1,3 @@
-import { describe } from "node:test";
 import Landing from "./page";
 import { act, render, screen } from "@testing-library/react";
 import { QuizMockDataInterface } from "./api/quiz/mock-data/quiz.mock-data";

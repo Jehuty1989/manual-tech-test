@@ -1,4 +1,3 @@
-import { describe } from "node:test";
 import Landing from "../../page";
 import { act, render, screen, cleanup } from "@testing-library/react";
 import { QuizMockDataInterface } from "../../api/quiz/mock-data/quiz.mock-data";
@@ -115,7 +114,7 @@ describe("Quiz", () => {
     });
   });
 
-  describe("select wrong answer", async () => {
+  describe("select wrong answer", () => {
     it("shows rejection message", async () => {
       await act(async () => {
         startQuiz();
