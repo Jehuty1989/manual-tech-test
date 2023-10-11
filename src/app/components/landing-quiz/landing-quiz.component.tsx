@@ -1,18 +1,10 @@
 import Image from "next/image";
 import style from "./landing-quiz.module.scss";
-import { Dispatch, SetStateAction } from "react";
+import Link from "next/link";
 
-interface LandingQuizProps {
-  showQuiz: boolean;
-  setShowQuiz: Dispatch<SetStateAction<boolean>>;
-}
-
-export default function LandingQuiz({
-  showQuiz,
-  setShowQuiz,
-}: LandingQuizProps) {
+export default function LandingQuiz() {
   return (
-    <div className={`${style.container} ${showQuiz && style["quiz-started"]}`}>
+    <div className={style.container}>
       <Image
         className={style.icon}
         src={"/icons/manual-icon.svg"}
@@ -29,13 +21,13 @@ export default function LandingQuiz({
           We’re working around the clock to bring you a holistic approach to
           your wellness. From top to bottom, inside and out.
         </p>
-        <button
+        <Link
           data-testid="start-quiz-button"
-          onClick={() => setShowQuiz(true)}
           className={`${style.button} heading-7`}
+          href={`/quiz/1`}
         >
           TAKE THE QUIZ
-        </button>
+        </Link>
       </div>
     </div>
   );

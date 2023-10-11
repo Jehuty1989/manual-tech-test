@@ -1,15 +1,14 @@
-import { Dispatch, SetStateAction, useCallback } from "react";
+import { useCallback } from "react";
 import CloseIcon from "../../../components/close-icon/close-icon.component";
 import style from "./quiz-error.module.scss";
+import { useRouter } from "next/navigation";
 
-interface QuizErrorProps {
-  setShowQuiz: Dispatch<SetStateAction<boolean>>;
-}
+export default function QuizError() {
+  const router = useRouter();
 
-export default function QuizError({ setShowQuiz }: QuizErrorProps) {
   const closeQuiz = useCallback((): void => {
-    setShowQuiz(false);
-  }, [setShowQuiz]);
+    router.push("/");
+  }, [router]);
 
   return (
     <div className={style.container}>

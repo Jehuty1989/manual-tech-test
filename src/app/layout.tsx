@@ -1,6 +1,7 @@
 import "./globals.scss";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Quiz from "./contexts/quiz.context";
 
 const ttNorms = localFont({
   src: [
@@ -29,7 +30,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={ttNorms.className}>{children}</body>
+      <body className={ttNorms.className}>
+        <Quiz>{children}</Quiz>
+      </body>
     </html>
   );
 }

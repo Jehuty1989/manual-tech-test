@@ -1,5 +1,13 @@
 import { act, render, screen } from "@testing-library/react";
-import Landing from "../../page";
+import QuizError from "./quiz-error.component";
+
+jest.mock("next/navigation", () => ({
+  useRouter() {
+    return {
+      prefetch: () => null,
+    };
+  },
+}));
 
 describe("Quiz Error", () => {
   it("renders the page if there is an error fetching the quiz", async () => {
@@ -10,7 +18,7 @@ describe("Quiz Error", () => {
     ) as jest.Mock;
 
     await act(async () => {
-      render(<Landing />);
+      render(<QuizError />);
     });
 
     expect(screen.getByTestId("quiz-error-heading").textContent).toBe(

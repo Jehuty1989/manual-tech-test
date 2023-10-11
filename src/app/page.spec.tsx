@@ -1,9 +1,9 @@
 import Landing from "./page";
 import { act, render, screen } from "@testing-library/react";
-import { QuizMockDataInterface } from "./api/quiz/route";
-import QuizQuestionType from "./components/quiz/quiz.component";
+import { QuizDataInterface } from "./api/quiz/route";
+import { QuizQuestionType } from "./quiz/[id]/page";
 
-const QuizMockData: QuizMockDataInterface = {
+const QuizMockData: QuizDataInterface = {
   questions: [
     {
       question: "Question 1",

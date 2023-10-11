@@ -1,6 +1,8 @@
-import { QuizQuestion } from "../../components/quiz/quiz.component";
+// import { QuizQuestion } from "../../components/quiz/quiz.component";
 
-export interface QuizMockDataInterface {
+import { QuizQuestion } from "../../quiz/[id]/page";
+
+export interface QuizDataInterface {
   questions: QuizQuestion[];
 }
 

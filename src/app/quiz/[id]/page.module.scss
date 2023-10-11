@@ -5,7 +5,7 @@
   align-items: center;
   gap: 32px;
   background-color: var(--White);
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
 
   .text {
@@ -22,6 +22,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 16px;
 
 
