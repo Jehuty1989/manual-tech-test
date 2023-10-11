@@ -52,7 +52,18 @@ export default function Quiz({ children }: { children: ReactNode }) {
       localStorage.getItem(SELECTED_ANSWERS_KEY) || "[]",
     );
 
-    setSelectedAnswers(existingAnswers);
+    // This check needs to be here because
+    // I was previously using an object
+    // for "existingAnswers" but it is now
+    // an array, so this check is for any
+    // user that may have an object in their
+    // localStorage
+    if (!!existingAnswers.length) {
+      setSelectedAnswers(existingAnswers);
+    } else {
+      localStorage.removeItem(SELECTED_ANSWERS_KEY);
+      setSelectedAnswers([]);
+    }
   }, [setSelectedAnswers]);
 
   if (loading) {
