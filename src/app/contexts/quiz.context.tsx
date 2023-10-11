@@ -1,9 +1,9 @@
 "use client";
 
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { QuizQuestion } from "../components/quiz/quiz.component";
 import { QuizDataInterface } from "../api/quiz/route";
 import Loading from "../../components/loading/loading.component";
+import { QuizQuestion } from "../quiz/[id]/page";
 
 export const QuizContext = createContext<QuizDataInterface | null>(null);
 
