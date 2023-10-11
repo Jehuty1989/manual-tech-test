@@ -1,9 +1,14 @@
-import { NextResponse } from "next/server";
-import {
-  QuizMockData,
-  QuizMockDataInterface,
-} from "./mock-data/quiz.mock-data";
+import { QuizQuestion } from "../../components/quiz/quiz.component";
 
-export async function GET(): Promise<NextResponse<QuizMockDataInterface>> {
-  return NextResponse.json(QuizMockData);
+export interface QuizMockDataInterface {
+  questions: QuizQuestion[];
+}
+
+export async function GET(): Promise<Response> {
+  const res = await fetch(
+    "https://manual-case-study.herokuapp.com/questionnaires/6-part.json",
+    // "https://manual-case-study.herokuapp.com/questionnaires/972423.json",
+  );
+
+  return res;
 }

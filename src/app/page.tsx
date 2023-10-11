@@ -6,7 +6,7 @@ import LandingQuiz from "./components/landing-quiz/landing-quiz.component";
 import { LandingHelpWithMockData } from "./mock-data/landing-help-with.mock-data";
 import style from "./page.module.scss";
 import { Quiz, QuizQuestion } from "./components/quiz/quiz.component";
-import { QuizMockDataInterface } from "./api/quiz/mock-data/quiz.mock-data";
+import { QuizMockDataInterface } from "./api/quiz/route";
 import Footer from "./components/footer/footer.component";
 import Loading from "../components/loading/loading.component";
 import QuizError from "./components/quiz-error/quiz-error.component";

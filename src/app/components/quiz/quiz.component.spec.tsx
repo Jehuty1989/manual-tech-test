@@ -1,6 +1,6 @@
 import Landing from "../../page";
 import { act, render, screen, cleanup } from "@testing-library/react";
-import { QuizMockDataInterface } from "../../api/quiz/mock-data/quiz.mock-data";
+import { QuizMockDataInterface } from "../../api/quiz/route";
 import QuizQuestionType from "../../components/quiz/quiz.component";
 
 const QuizMockData: QuizMockDataInterface = {
