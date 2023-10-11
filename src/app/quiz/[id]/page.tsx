@@ -25,13 +25,38 @@ const SELECTED_ANSWERS_KEY = "selectedAnswers";
 
 export default function Quiz({ params }: { params: { id: string } }) {
   const indexOfQuestion = parseInt(params.id) - 1;
+  const router = useRouter();
   const quiz = useContext(QuizContext);
   const howManyQuestions = quiz?.questions.length;
   const question = quiz?.questions[indexOfQuestion];
-  const router = useRouter();
   const [isEndOfQuiz, setIsEndOfQuiz] = useState<boolean>(false);
   const [selectedAnswers, setSelectedAnswers] =
     useState<SelectedAnswerInterface>({});
+
+  useEffect(() => {
+    const existingAnswers = localStorage.getItem(SELECTED_ANSWERS_KEY);
+    const howManySelectedAnswers = Object.keys(
+      JSON.parse(existingAnswers || "[]"),
+    ).length;
+
+    if (Number.isNaN(indexOfQuestion)) {
+      router.push(`/quiz/${howManySelectedAnswers + 1}`);
+    }
+
+    if (indexOfQuestion < 1) {
+      router.push(`/quiz/${howManySelectedAnswers + 1}`);
+    }
+
+    if (existingAnswers) {
+      if (indexOfQuestion > howManySelectedAnswers) {
+        router.push(`/quiz/${howManySelectedAnswers + 1}`);
+      }
+
+      setSelectedAnswers(JSON.parse(existingAnswers));
+    } else if (!existingAnswers && indexOfQuestion > howManySelectedAnswers) {
+      router.push(`/quiz/${howManySelectedAnswers + 1}`);
+    }
+  }, [setSelectedAnswers, router, indexOfQuestion]);
 
   useEffect(() => {
     if (howManyQuestions && howManyQuestions > 0) {
@@ -40,14 +65,6 @@ export default function Quiz({ params }: { params: { id: string } }) {
       setIsEndOfQuiz(false);
     }
   }, [setIsEndOfQuiz, indexOfQuestion, howManyQuestions]);
-
-  useEffect(() => {
-    const existingAnswers = localStorage.getItem(SELECTED_ANSWERS_KEY);
-
-    if (existingAnswers) {
-      setSelectedAnswers(JSON.parse(existingAnswers));
-    }
-  }, [setSelectedAnswers]);
 
   const setAnswer = useCallback(
     (selectedAnswer: QuizOption): void => {
@@ -69,16 +86,6 @@ export default function Quiz({ params }: { params: { id: string } }) {
     },
     [router],
   );
-
-  const resetQuiz = useCallback((): void => {
-    const existingAnswers = localStorage.getItem(SELECTED_ANSWERS_KEY);
-    console.log(existingAnswers);
-
-    if (existingAnswers) {
-      localStorage.removeItem(SELECTED_ANSWERS_KEY);
-      route("/quiz/1");
-    }
-  }, [route]);
 
   if (!quiz) {
     return <QuizError />;
