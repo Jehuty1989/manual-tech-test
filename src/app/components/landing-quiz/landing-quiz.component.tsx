@@ -1,8 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import style from "./landing-quiz.module.scss";
 import Link from "next/link";
+import { useContext } from "react";
+import { QuizContext } from "../../contexts/quiz.context";
 
 export default function LandingQuiz() {
+  const { selectedAnswers } = useContext(QuizContext);
+  const howManySelectedAnswers = selectedAnswers.length;
+
   return (
     <div className={style.container}>
       <Image
@@ -24,7 +31,7 @@ export default function LandingQuiz() {
         <Link
           data-testid="start-quiz-button"
           className={`${style.button} heading-7`}
-          href={`/quiz/1`}
+          href={`/quiz/${howManySelectedAnswers + 1}`}
         >
           TAKE THE QUIZ
         </Link>

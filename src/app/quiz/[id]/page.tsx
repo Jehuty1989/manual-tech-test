@@ -1,13 +1,12 @@
 "use client";
 
 import { useCallback, useContext, useEffect, useState } from "react";
-import { QuizContext } from "../../contexts/quiz.context";
+import { QuizContext, SELECTED_ANSWERS_KEY } from "../../contexts/quiz.context";
 import style from "./page.module.scss";
 import { useRouter } from "next/navigation";
 import CloseIcon from "../../../components/close-icon/close-icon.component";
 import QuizError from "../../components/quiz-error/quiz-error.component";
-
-type SelectedAnswerInterface = Record<number, QuizOption>;
+import Loading from "../../../components/loading/loading.component";
 
 export interface QuizOption {
   display: string;
@@ -21,56 +20,47 @@ export interface QuizQuestion {
   options: QuizOption[];
 }
 
-const SELECTED_ANSWERS_KEY = "selectedAnswers";
-
 export default function Quiz({ params }: { params: { id: string } }) {
   const indexOfQuestion = parseInt(params.id) - 1;
   const router = useRouter();
-  const quiz = useContext(QuizContext);
-  const howManyQuestions = quiz?.questions.length;
-  const question = quiz?.questions[indexOfQuestion];
-  const [isEndOfQuiz, setIsEndOfQuiz] = useState<boolean>(false);
-  const [selectedAnswers, setSelectedAnswers] =
-    useState<SelectedAnswerInterface>({});
+  const { questions, selectedAnswers, setSelectedAnswers } =
+    useContext(QuizContext);
+  const howManyQuestions = questions.length;
+  const question = questions[indexOfQuestion];
+  const isEndOfQuiz = indexOfQuestion >= howManyQuestions;
+
+  const routeIsIncorrect = useCallback((): boolean => {
+    const howManySelectedAnswers = selectedAnswers.length;
+    return (
+      Number.isNaN(indexOfQuestion) ||
+      indexOfQuestion < 0 ||
+      indexOfQuestion > howManySelectedAnswers
+    );
+  }, [indexOfQuestion, selectedAnswers.length]);
 
   useEffect(() => {
-    const existingAnswers = localStorage.getItem(SELECTED_ANSWERS_KEY);
-    const howManySelectedAnswers = Object.keys(
-      JSON.parse(existingAnswers || "[]"),
-    ).length;
+    const howManySelectedAnswers = selectedAnswers.length;
 
-    if (Number.isNaN(indexOfQuestion)) {
-      router.push(`/quiz/${howManySelectedAnswers + 1}`);
+    if (routeIsIncorrect()) {
+      router.replace(`/quiz/${howManySelectedAnswers + 1}`);
     }
 
-    if (indexOfQuestion < 0) {
-      router.push(`/quiz/${howManySelectedAnswers + 1}`);
-    }
-
-    if (existingAnswers) {
-      if (indexOfQuestion > howManySelectedAnswers) {
-        router.push(`/quiz/${howManySelectedAnswers + 1}`);
+    if (selectedAnswers) {
+      if (routeIsIncorrect()) {
+        router.replace(`/quiz/${howManySelectedAnswers + 1}`);
       }
 
-      setSelectedAnswers(JSON.parse(existingAnswers));
-    } else if (!existingAnswers && indexOfQuestion > howManySelectedAnswers) {
-      router.push(`/quiz/${howManySelectedAnswers + 1}`);
+      setSelectedAnswers(selectedAnswers);
+    } else if (!selectedAnswers && routeIsIncorrect()) {
+      router.replace(`/quiz/${howManySelectedAnswers + 1}`);
     }
-  }, [setSelectedAnswers, router, indexOfQuestion]);
-
-  useEffect(() => {
-    if (howManyQuestions && howManyQuestions > 0) {
-      setIsEndOfQuiz(indexOfQuestion >= howManyQuestions);
-    } else {
-      setIsEndOfQuiz(false);
-    }
-  }, [setIsEndOfQuiz, indexOfQuestion, howManyQuestions]);
+  }, [setSelectedAnswers, router, routeIsIncorrect, selectedAnswers]);
 
   const setAnswer = useCallback(
     (selectedAnswer: QuizOption): void => {
       const tempSelectedAnswers = selectedAnswers;
       tempSelectedAnswers[indexOfQuestion] = selectedAnswer;
-      setSelectedAnswers({ ...tempSelectedAnswers });
+      setSelectedAnswers([...tempSelectedAnswers]);
       localStorage.setItem(
         SELECTED_ANSWERS_KEY,
         JSON.stringify(selectedAnswers),
@@ -87,8 +77,12 @@ export default function Quiz({ params }: { params: { id: string } }) {
     [router],
   );
 
-  if (!quiz) {
+  if (questions.length < 1) {
     return <QuizError />;
+  }
+
+  if (routeIsIncorrect()) {
+    return <Loading />;
   }
 
   return (
