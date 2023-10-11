@@ -77,6 +77,12 @@ export default function Quiz({ params }: { params: { id: string } }) {
     [router],
   );
 
+  const restartQuiz = useCallback((): void => {
+    localStorage.removeItem(SELECTED_ANSWERS_KEY);
+    setSelectedAnswers([]);
+    router.replace("/quiz/1");
+  }, [router, setSelectedAnswers]);
+
   if (questions.length < 1) {
     return <QuizError />;
   }
@@ -121,6 +127,9 @@ export default function Quiz({ params }: { params: { id: string } }) {
                   className={`${
                     answerIsSelected ? style["answer-selected"] : style.answer
                   }`}
+                  // I wouldn't use this but it will render the image
+                  // if there is a small typo, may be better to render
+                  // an error image instead
                   dangerouslySetInnerHTML={{ __html: option.display }}
                 ></div>
               );
@@ -185,6 +194,15 @@ export default function Quiz({ params }: { params: { id: string } }) {
               <p className="body-4">Finish</p>
             </button>
           )}
+        </div>
+        <div className={style["button-container"]}>
+          <button
+            className={style.button}
+            onClick={restartQuiz}
+            disabled={selectedAnswers.length < 1}
+          >
+            <p className="body-4">Restart</p>
+          </button>
         </div>
       </div>
     </>
