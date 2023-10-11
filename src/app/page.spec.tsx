@@ -1,13 +1,12 @@
 import Landing from "./page";
 import { act, render, screen } from "@testing-library/react";
 import { QuizDataInterface } from "./api/quiz/route";
-import { QuizQuestionType } from "./quiz/[id]/page";
 
 const QuizMockData: QuizDataInterface = {
   questions: [
     {
       question: "Question 1",
-      type: QuizQuestionType.ChoiceType,
+      type: "ChoiceType",
       options: [
         {
           display: "Q1 Answer 1",
@@ -28,7 +27,7 @@ const QuizMockData: QuizDataInterface = {
     },
     {
       question: "Question 2",
-      type: QuizQuestionType.ChoiceType,
+      type: "ChoiceType",
       options: [
         {
           display: "Q2 Answer 1",

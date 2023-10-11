@@ -9,10 +9,6 @@ import QuizError from "../../components/quiz-error/quiz-error.component";
 
 type SelectedAnswerInterface = Record<number, QuizOption>;
 
-export enum QuizQuestionType {
-  ChoiceType,
-}
-
 export interface QuizOption {
   display: string;
   value: string | boolean;
@@ -21,7 +17,7 @@ export interface QuizOption {
 
 export interface QuizQuestion {
   question: string;
-  type: QuizQuestionType;
+  type: "ChoiceType";
   options: QuizOption[];
 }
 
