@@ -43,7 +43,7 @@ export default function Quiz({ params }: { params: { id: string } }) {
       router.push(`/quiz/${howManySelectedAnswers + 1}`);
     }
 
-    if (indexOfQuestion < 1) {
+    if (indexOfQuestion < 0) {
       router.push(`/quiz/${howManySelectedAnswers + 1}`);
     }
 
